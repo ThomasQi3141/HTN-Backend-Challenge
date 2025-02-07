@@ -9,20 +9,19 @@ generator client {
 
 model User {
   badge_code  String   @id
-  user_id     String?
-  name        String?
-  email       String?
-  phone       String?
-  created_at  DateTime?
-  updated_at  DateTime?
+  name        String
+  email       String   @unique
+  phone       String
+  created_at  DateTime
+  updated_at  DateTime
 
   activities  UserActivity[]
 }
 
 model ActivityCategory {
   activity_name     String  @id
-  activity_category String?
-  scan_count        Int?
+  activity_category String
+  scan_count        Int
 
   userActivities    UserActivity[]
 }
@@ -30,7 +29,7 @@ model ActivityCategory {
 model UserActivity {
   user_badge_code   String
   activity_name     String
-  scanned_at        DateTime?
+  scanned_at        DateTime
 
   user              User             @relation(fields: [user_badge_code], references: [badge_code])
   activityCategory  ActivityCategory @relation(fields: [activity_name], references: [activity_name])
