@@ -1,13 +1,19 @@
 import express from "express";
-
-const port = process.env.PORT || 3000;
+// import userRoutes from "./src/routes/userRoutes.js";
+// import scanRoutes from "./src/routes/scanRoutes.js";
+import setupSwagger from "./src/config/swagger.js";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// JSON parsing
+app.use(express.json());
+// Swagger setup
+setupSwagger(app);
 
-app.listen(port, () => {
-  console.log(`Example REST Express app listening at http://localhost:${port}`);
-});
+// app.use("/users", userRoutes);
+// app.use("/scan", scanRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+export default app;
