@@ -11,9 +11,9 @@ model User {
   badge_code  String   @id
   name        String
   email       String   @unique
-  phone       String
+  phone       String   
   created_at  DateTime
-  updated_at  DateTime
+  updated_at  DateTime @updatedAt
 
   activities  UserActivity[]
 }
@@ -35,5 +35,5 @@ model UserActivity {
   activityCategory  ActivityCategory @relation(fields: [activity_name], references: [activity_name])
 
   // Composite primary key to ensure activies are unique
-  @@id([user_badge_code, activity_name])
+  @@id([user_badge_code, activity_name, scanned_at])
 }

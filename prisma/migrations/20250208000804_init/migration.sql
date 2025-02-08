@@ -21,7 +21,7 @@ CREATE TABLE "UserActivity" (
     "activity_name" TEXT NOT NULL,
     "scanned_at" DATETIME NOT NULL,
 
-    PRIMARY KEY ("user_badge_code", "activity_name"),
+    PRIMARY KEY ("user_badge_code", "activity_name", "scanned_at"),
     CONSTRAINT "UserActivity_user_badge_code_fkey" FOREIGN KEY ("user_badge_code") REFERENCES "User" ("badge_code") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "UserActivity_activity_name_fkey" FOREIGN KEY ("activity_name") REFERENCES "ActivityCategory" ("activity_name") ON DELETE RESTRICT ON UPDATE CASCADE
 );
