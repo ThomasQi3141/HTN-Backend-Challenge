@@ -8,10 +8,11 @@ generator client {
 }
 
 model User {
+  // badge codes are unique, can be treated as key
   badge_code  String   @id
   name        String
   email       String   @unique
-  phone       String   
+  phone       String   @unique
   created_at  DateTime
   updated_at  DateTime @updatedAt
 
@@ -19,6 +20,7 @@ model User {
 }
 
 model ActivityCategory {
+  // activity names are unique, can be treated as key
   activity_name     String  @id
   activity_category String
   scan_count        Int
