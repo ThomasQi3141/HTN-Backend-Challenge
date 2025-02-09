@@ -2,7 +2,7 @@
 
 My submission for the Hack the North backend challenge! 
 
-Check out the swagger docs for more information on the endpoints!
+Check out the Swagger docs for more information on the endpoints!
 
 ## Tech Stack
 - <a href="https://expressjs.com/">Express</a>
