@@ -45,6 +45,7 @@ model UserActivity {
 model UserFriends {
   user_badge_code  String
   friend_badge_code  String
+  created_at DateTime
 
   user1 User @relation("Friendship1", fields: [user_badge_code], references: [badge_code])
   user2 User @relation("Friendship2", fields: [friend_badge_code], references: [badge_code])
