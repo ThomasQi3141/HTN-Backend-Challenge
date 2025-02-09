@@ -17,6 +17,8 @@ model User {
   updated_at  DateTime @updatedAt
 
   activities  UserActivity[]
+  userFriends1 UserFriends[] @relation("Friendship1")
+  userFriends2 UserFriends[] @relation("Friendship2")
 }
 
 model ActivityCategory {
@@ -38,4 +40,14 @@ model UserActivity {
 
   // Composite primary key to ensure activies are unique
   @@id([user_badge_code, activity_name, scanned_at])
+}
+
+model UserFriends {
+  user_badge_code  String
+  friend_badge_code  String
+
+  user1 User @relation("Friendship1", fields: [user_badge_code], references: [badge_code])
+  user2 User @relation("Friendship2", fields: [friend_badge_code], references: [badge_code])
+
+  @@id([user_badge_code, friend_badge_code])
 }
